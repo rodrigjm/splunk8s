@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: store-ingress
+  namespace: sock-shop 
+  #app: sock-store
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: store.beepbeepboop.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: front-end 
+          servicePort: 8079 
