@@ -1,0 +1,9 @@
+apiVersion: enterprise.splunk.com/v1beta1
+kind: SearchHeadCluster
+metadata:
+  name: example
+  finalizers:
+  - enterprise.splunk.com/delete-pvc
+spec:
+  clusterMasterRef:
+    name: cm

@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: splunk-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/affinity: cookie
+    #certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  rules:
+  - host: splunk.beepbeepboop.org 
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-examplesh-standalone-service 
+          servicePort: 8000
+  - host: hec.beepbeepboop.org 
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-exampleidx-indexer-service 
+          servicePort: 8088
+  - host: cm.beepbeepboop.org 
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-cm-cluster-master-service 
+          servicePort: 8000
+  - host: dmc.beepbeepboop.org 
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-default-monitoring-console-service 
+          servicePort: 8000
+  - host: spark.beepbeepboop.org 
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-example-spark-master-service 
+          servicePort: 8009

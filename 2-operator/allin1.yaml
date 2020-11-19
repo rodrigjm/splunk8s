@@ -1,0 +1,56 @@
+#apiVersion: enterprise.splunk.com/v1beta1
+#kind: Spark
+#metadata:
+#  name: example
+#spec:
+#  replicas: 3
+---
+apiVersion: enterprise.splunk.com/v1beta1
+kind: ClusterMaster
+metadata:
+  name: cm
+  finalizers:
+  - enterprise.splunk.com/delete-pvc
+spec:
+  ephemeralStorage: true
+---
+apiVersion: enterprise.splunk.com/v1beta1
+kind: IndexerCluster
+metadata:
+  name: exampleidx
+  finalizers:
+  - enterprise.splunk.com/delete-pvc
+spec:
+  # No cluster-master created, uses the referenced one
+  clusterMasterRef:
+    name: cm
+  replicas: 3 
+  ephemeralStorage: true
+  volumes:
+    - name: apps
+      configMap:
+        name: splunk-apps
+  defaults: |-
+    splunk:
+      apps_location:
+        - "/mnt/apps/eksdemo.tgz"
+---
+apiVersion: enterprise.splunk.com/v1beta1
+kind: Standalone
+metadata:
+  name: examplesh
+spec:
+  clusterMasterRef:
+    name: cm
+  sparkRef:
+    name: example
+  ephemeralStorage: true 
+  volumes:
+    - name: apps
+      configMap:
+        name: splunk-apps
+  defaults: |-
+    splunk:
+      password: Pl@tano6 
+      apps_location:
+       - "/mnt/apps/eksdemo.tgz"
