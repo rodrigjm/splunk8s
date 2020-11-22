@@ -26,14 +26,6 @@ spec:
     name: cm
   replicas: 3 
   ephemeralStorage: true
-  volumes:
-    - name: apps
-      configMap:
-        name: splunk-apps
-  defaults: |-
-    splunk:
-      apps_location:
-        - "/mnt/apps/eksdemo.tgz"
 ---
 apiVersion: enterprise.splunk.com/v1beta1
 kind: Standalone
@@ -51,6 +43,6 @@ spec:
         name: splunk-apps
   defaults: |-
     splunk:
-      password: Pl@tano6 
+      password: stuff 
       apps_location:
        - "/mnt/apps/eksdemo.tgz"
