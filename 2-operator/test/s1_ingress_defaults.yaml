@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: s1-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/affinity: cookie
+    #certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  rules:
+  - host: s1.10.0.0.154.nip.io 
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-s1-standalone-service
+          servicePort: 8000
+  - host: hec.10.0.0.154.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-s1-standalone-service
+          servicePort: 8088

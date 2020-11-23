@@ -1,0 +1,19 @@
+apiVersion: enterprise.splunk.com/v1beta1
+kind: Standalone
+metadata:
+  name: s1 
+  finalizers:
+  - enterprise.splunk.com/delete-pvc
+spec:
+  volumes:
+    - name: defaults
+      configMap:
+        name: splunk-defaults
+    - name: apps
+      configMap:
+        name: splunk-apps
+  defaults: |-
+    splunk:
+      apps_location:
+        - "/mnt/apps/eksdemo.tgz"
+  defaultsUrl: /mnt/defaults/default.yml

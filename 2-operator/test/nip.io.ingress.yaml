@@ -4,7 +4,7 @@ metadata:
   name: splunk-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/affinity: cookie
+    #nginx.ingress.kubernetes.io/affinity: cookie
     #certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
 spec:
   rules:
@@ -18,7 +18,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: splunk-exampleidx-indexer-service 
+          serviceName: splunk-examplesh-standalone-service 
           servicePort: 8088
   - host: cm.10.0.0.154.nip.io 
     http:
@@ -38,3 +38,9 @@ spec:
       - backend:
           serviceName: splunk-example-spark-master-service 
           servicePort: 8009
+  - host: dfs.10.0.0.154.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-dfsexample-standalone-service 
+          servicePort: 8000

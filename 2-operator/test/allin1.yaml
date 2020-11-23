@@ -1,9 +1,9 @@
-#apiVersion: enterprise.splunk.com/v1beta1
-#kind: Spark
-#metadata:
-#  name: example
-#spec:
-#  replicas: 3
+apiVersion: enterprise.splunk.com/v1beta1
+kind: Spark
+metadata:
+  name: example
+spec:
+  replicas: 3
 ---
 apiVersion: enterprise.splunk.com/v1beta1
 kind: ClusterMaster
