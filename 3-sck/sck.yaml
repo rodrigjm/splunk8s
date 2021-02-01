@@ -5,12 +5,16 @@ global:
     hec:
       protocol: https
       insecureSSL: true 
-      host: splunk-s1-apps 
+      host: s1-apps-test
       token: 00000000-0000-0000-0000-000000000000 
       port: 8088
 
 #local config for logging chart
 splunk-kubernetes-logging:
+# IF USING CRIO//K3S
+  # containers:
+  #   logFormat: "%Y-%m-%dT%H:%M:%S.%NZ"
+  #   logFormatType: cri
   kubernetes:
     clusterName: eks_cluster 
   journalLogPath: /run/log/journal

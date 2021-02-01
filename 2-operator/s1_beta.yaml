@@ -5,7 +5,8 @@ metadata:
   finalizers:
   - enterprise.splunk.com/delete-pvc
 spec:
-#  storageClassName: hostpath 
+#  storageClassName: hostpath
+  ephemeralStorage: true
   volumes:
     - name: apps
       configMap:
