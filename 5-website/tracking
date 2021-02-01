@@ -1,0 +1,17 @@
+sockshop 
+    content?
+    - itsi content pack for sock-shop
+    - new dashboards
+    - security usescases
+        - web scanning
+        - xss 
+        - web vulnerability
+        - container scanning
+    - IIM integration for metrics
+K8S
+    content?
+    - K8S ITSI content pack
+    - security usecases
+        - kubehunter
+        - Kali plugins?
+    - integration of IIM addon for k8s metrics

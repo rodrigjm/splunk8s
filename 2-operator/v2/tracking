@@ -1,0 +1,14 @@
+- distribtued deployment
+    - shc
+    - idxc
+    - spark
+    - apps
+    - java
+- HWF
+    - HPA
+- SmartStore
+- IIM addon
+- content
+    - itsi content pack
+    - integration with IIM addon
+    - traces and metrics in ITSI
