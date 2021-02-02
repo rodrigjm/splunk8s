@@ -29,8 +29,7 @@ spec:
     splunk:
       apps_location:
         - "/mnt/apps/eksdemo.tgz"
-        - "http://synology:9000/apps/splunk-it-service-intelligence_471.tar.gz?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210127%2F%2Fs3%2Faws4_request&X-Amz-Date=20210127T233809Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=6b9c6cd0ec98f3292f77986fbe753d776d23f34e72a8f22186a39747b7891e3b"
-        - "http://synology:9000/apps/config-explorer_149.tgz?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20210127%2F%2Fs3%2Faws4_request&X-Amz-Date=20210127T233838Z&X-Amz-Expires=432000&X-Amz-SignedHeaders=host&X-Amz-Signature=ca9d27f2e9d15792de764c0f7007d954cfd22c90c4f27417e719698aed26afe0"
+        - "http://10.0.0.190:9000/apps/splunk-it-service-intelligence_471.tar.gz"
 
 
 # have to use sparkimage variable to install java -- that's lame!
