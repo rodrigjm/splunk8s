@@ -1,17 +1,51 @@
+#NO CERT
+
+
+# apiVersion: networking.k8s.io/v1beta1
+# kind: Ingress
+# metadata:
+#   name: store-ingress
+#   namespace: sock-shop 
+#   #app: sock-store
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt-prod
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   rules:
+#   - host: store.beepbeepboop.org
+#     http:
+#       paths:
+#       - backend:
+#           serviceName: front-end 
+#           servicePort: 8079 
+#         path: /
+#   tls: # < placing a host in the TLS config will indicate a certificate should be created
+#   - hosts:
+#     - store.beepbeepboop.org
+#     secretName: store
+---
+
+# YES CERT  -- with cert-manager
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: store-ingress
-  namespace: sock-shop 
-  #app: sock-store
+  namespace: sock-shop
   annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.class: nginx
+    #nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+  - hosts:
+    - store.beepbeepboop.org
+    secretName: store
   rules:
   - host: store.beepbeepboop.org
     http:
       paths:
-      - path: /
-        backend:
-          serviceName: front-end 
-          servicePort: 8079 
+      - backend:
+          serviceName: front-end
+          servicePort: 8079
+        path: /

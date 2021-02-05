@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: splunk-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/affinity: cookie
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.org/client-max-body-size: "4m"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # tls:
+  # - hosts:
+  #   - hec.beepbeepboop.org
+  #   - splunk.beepbeepboop.org
+  #   secretName: splk
+  rules:
+  # change host to match custom URL
+  - host: splunk.beepbeepboop.org 
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-s1-apps-test-standalone-service 
+          servicePort: 8000
+  - host: hec.beepbeepboop.org 
+    http:
+      paths:
+      - backend:
+          serviceName: splunk-s1-apps-test-standalone-service 
+          servicePort: 8088
