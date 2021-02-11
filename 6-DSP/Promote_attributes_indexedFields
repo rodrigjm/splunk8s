@@ -1,0 +1,9 @@
+| from splunk_firehose() | eval event=cast(body, "string"), eventmap=ucast(body, "map<string, any>", null), label_release=map_get(attributes, "label_release"),
+cluster_name=map_get(attributes, "cluster_name"),
+container_name=map_get(attributes, "container_name"),
+pod=map_get(attributes, "pod"),
+pod_uid=map_get(attributes, "pod_uid"),
+namespace=map_get(attributes, "namespace"),
+index=map_get(attributes, "index"),
+label_app=map_get(attributes, "label_app"),
+container_id=map_get(attributes, "container_id") | where like(source_type, "kube:%") | into into_splunk_enterprise_indexes("8a01c69e-28d5-4a2f-96ae-e020f4939e5b", cast(map_get(attributes, "index"), "string"), "main");

@@ -5,16 +5,16 @@ global:
     hec:
       protocol: https
       insecureSSL: true 
-      host: splunk-itsi-standalone
-      token: 00000000-0000-0000-0000-000000000000 
-      port: 8088
+      host: 10.0.0.86
+      token: "dsphec:d72a81f3242c79a1bf055d0c3d7bc48bcdb20f6f3abcd9502dc9cfc8e4a7368e:b1a4acc8-6bce-4cfc-91e0-421160db1b34"
+      port: 31000
 
 #local config for logging chart
 splunk-kubernetes-logging:
 # IF USING CRIO//K3S
-  # containers:
-  #   logFormat: "%Y-%m-%dT%H:%M:%S.%NZ"
-  #   logFormatType: cri
+  containers:
+    logFormat: "%Y-%m-%dT%H:%M:%S.%NZ"
+    logFormatType: cri
   kubernetes:
     clusterName: eks_cluster 
   journalLogPath: /run/log/journal
