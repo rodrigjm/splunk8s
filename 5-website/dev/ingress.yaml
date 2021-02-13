@@ -32,17 +32,17 @@ metadata:
   name: store-ingress
   namespace: sock-shop
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/ingress.class: nginx
     #nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  tls:
-  - hosts:
-    - store.beepbeepboop.org
-    secretName: store
+  # tls:
+  # - hosts:
+  #   - store.gbus.us
+  #   secretName: store
   rules:
-  - host: store.beepbeepboop.org
+  - host: store.gbus.us
     http:
       paths:
       - backend:
