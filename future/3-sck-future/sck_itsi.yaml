@@ -16,7 +16,7 @@ splunk-kubernetes-logging:
     logFormat: "%Y-%m-%dT%H:%M:%S.%NZ"
     logFormatType: cri
   kubernetes:
-    clusterName: eks_cluster 
+    clusterName: prod_cluster 
   journalLogPath: /run/log/journal
   splunk:
     hec:
@@ -31,7 +31,7 @@ splunk-kubernetes-objects:
     name: splunk-kubernetes-objects
   kubernetes:
     insecureSSL: true
-    clusterName: eks_cluster 
+    clusterName: prod_cluster 
   objects:
     core:
       v1:
@@ -51,7 +51,7 @@ splunk-kubernetes-metrics:
     kubeletPort: 10250
     useRestClientSSL: true
     insecureSSL: true
-    clusterName: eks_cluster 
+    clusterName: prod_cluster 
   rbac:
     create: true
   serviceAccount:
