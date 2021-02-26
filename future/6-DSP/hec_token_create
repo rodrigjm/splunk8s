@@ -1,0 +1,26 @@
+./scloud ingest post-collector-tokens --name sockshop 
+```
+{
+    "created_at": "2021-02-10T17:56:42.059771271Z",
+    "created_by": "2ecb5e35-63ef-4cca-ac38-3bd520268509",
+    "last_modified_at": "2021-02-10T17:56:42.059771271Z",
+    "last_modified_by": "2ecb5e35-63ef-4cca-ac38-3bd520268509",
+    "name": "hectest",
+    "tenant": "default",
+    "token": "dsphec:d72a81f3242c79a1bf055d0c3d7bc48bcdb20f6f3abcd9502dc9cfc8e4a7368e:b1a4acc8-6bce-4cfc-91e0-421160db1b34"
+}
+
+
+curl -X POST -k "https://10.0.0.86:31000/services/collector/event" \
+   -H "Authorization: Splunk dsphec:d72a81f3242c79a1bf055d0c3d7bc48bcdb20f6f3abcd9502dc9cfc8e4a7368e:b1a4acc8-6bce-4cfc-91e0-421160db1b34" \
+   -d '{
+   "event": "Hello, world!",
+   "sourcetype": "manual"
+}'
+
+curl -X POST  "http://hec.beepbeepboop.org/services/collector/event" \
+   -H "Authorization: Splunk 00000000-0000-0000-0000-000000000000" \
+   -d '{
+   "event": "Hello, world!",
+   "sourcetype": "manual"
+}'
